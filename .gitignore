@@ -1,3 +1,6 @@
+.DS_Store
+index_files/*
+
 # History files
 .Rhistory
 .Rapp.history
@@ -37,3 +40,5 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+
+/.quarto/

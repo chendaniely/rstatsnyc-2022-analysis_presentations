@@ -1,0 +1,289 @@
+---
+title: "Combining Analysis Work with Reports and Presentations"
+subtitle: "What I Would Change About My Dissertation"
+
+author: "[Daniel Chen](https://daniel.rbind.io/)"
+date: "Thursday, June 9, 2022"
+format:
+  revealjs:
+    footer: "[Daniel Chen](https://daniel.rbind.io/). @chendaniely. Using [Quarto](https://quarto.org/docs/presentations/revealjs/index.html). Slides: [https://github.com/chendaniely/2022-04-28-pycon2022-eduSummit-practice](https://github.com/chendaniely/2022-04-28-pycon2022-eduSummit-practice)"
+    theme: ["custom.scss"]
+    slide-number: c/t
+    show-slide-number: all
+    hash-type: number
+---
+
+## Munsee Lenape {.center}
+
+<style>
+div.footnote {
+  font-size: 10px;
+}
+</style>
+
+::: footnote
+
+- https://native-land.ca/
+
+:::
+
+## Tutelo {.center}
+
+<img src="img/intro/tutelo.png" alt="map of native lands in eastern USA with arrow pointed to Blacksburg/Roanoke Virginia area in the Tutelo Tribe" />
+
+::: footnote
+
+- https://native-land.ca/
+
+:::
+
+## Thank You
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">I’m developing a presentation for <a href="https://twitter.com/seruff_?ref_src=twsrc%5Etfw">@seruff_</a> using <a href="https://twitter.com/quarto_pub?ref_src=twsrc%5Etfw">@quarto_pub</a> presentations.<br>I started to implement a similar theme as the xaringan <a href="https://twitter.com/RLadiesGlobal?ref_src=twsrc%5Etfw">@RLadiesGlobal</a> theme made by <a href="https://twitter.com/apreshill?ref_src=twsrc%5Etfw">@apreshill</a> !<br>If anyone wants to help to improve it, It would be awesome 💜 <a href="https://twitter.com/hashtag/rladies?src=hash&amp;ref_src=twsrc%5Etfw">#rladies</a> <a href="https://twitter.com/hashtag/RStats?src=hash&amp;ref_src=twsrc%5Etfw">#RStats</a> <a href="https://t.co/xps1v49Ku4">https://t.co/xps1v49Ku4</a> <a href="https://t.co/sK9d3X3unE">pic.twitter.com/sK9d3X3unE</a></p>&mdash; Beatriz Milz (@BeaMilz) <a href="https://twitter.com/BeaMilz/status/1515327145471578120?ref_src=twsrc%5Etfw">April 16, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+## Daniel Chen, PhD, MPH {.center}
+
+:::::: columns
+::: {.column width="40%"}
+<center>
+
+<a href='mailto:chendaniely@gmail.com'><i class="far fa-envelope"></i></a>
+<a href='https://twitter.com/chendaniely'><i class="fab fa-twitter"></i>
+<a href='https://github.com/chendaniely'><i class="fab fa-github"></i></a>
+<a href='https://twitch.tv/chendaniely'><i class="fab fa-twitch"></i></a>
+@chendaniely
+
+<img src="img/foto.jpeg" alt="Daniel Chen" style="border-radius: 50%; max-width: 70%;"/>
+
+</center>
+:::
+
+::: {.column width="60%"}
+- Postdoctoral Research and Teaching Fellow, UBC, MDS-Vancouver
+
+- Data Science Educator, RStudio, PBC ([RStudio Academy](https://www.rstudio.com/academy/))
+
+- Data Scientist, [Lander Analytics](https://www.landeranalytics.com/)
+
+- Author, [Pandas for Everyone](https://www.pearson.com/us/higher-education/program/Chen-Pandas-for-Everyone-Python-Data-Analysis/PGM335102.html)
+
+- Alumni
+    - The Carpentries
+:::
+::::::
+
+# Reproducible + Repliciable Science
+
+## Replication Crisis in Science
+
+## Important for scale
+
+## Adding Structure + Best Practices
+
+
+# Analysis Project Structure
+
+## Folder Setup
+
+## Naming Things
+
+## Project File + Working Directories
+
+## Pinning your package versions
+
+- `renv`
+- `renv::snapshot()`
+- `renv::restore()`
+
+## Only commiting the "final" artifacts
+
+- So the reports and presentations can always refer to things I need
+
+## What I would Improve
+
+- Actually use the `R` package structure
+- I know I was asking to get my computer set on fire!
+- But the structure was there
+
+## DESCRIPTION to fake a package
+
+```
+Type: Project
+Package: dissertation-analysis
+Title: Dissertation Analysis
+Version: 0.0.0.9000
+Authors@R: 
+    person("Daniel", "Chen",
+           "chendaniely@gmail.com",
+           role = c("aut", "cre"))
+Description: Dissertation Analysis
+Imports:
+    tidyverse,
+    qualtRics
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Encoding: UTF-8
+LazyData: true
+```
+
+## Load Your Functions
+
+```r
+pkgload::load_all()
+```
+
+## Rig to manage Multiple R versions
+
+- Already built-in to windows
+- RSwitch isn't maintained
+- Linux now has _something_
+
+https://github.com/r-lib/rig
+
+## Properly Setup a Build Enviornment
+
+- All I had were R scripts
+- Look into `targets`
+- Could also have used `Make` but I needed to do parameter sweeps of files.
+- Not the worst thing in the world, I didn't mind re-running the entire pipeline
+
+# Other project repositories
+
+## Don't keep everything in a mono repo
+
+- ds4biomed book: https://github.com/chendaniely/ds4biomed/
+- IRB: https://github.com/chendaniely/dissertation-irb/
+- Initial Plan: https://github.com/chendaniely/dissertation-plan
+- Presentations: https://github.com/chendaniely/dissertation-presentations
+- Prelims: https://github.com/chendaniely/dissertation-prelim
+- Submitted Paper: https://github.com/chendaniely/dissertation-paper-03-assessment
+- Actual Dissertation (EDT): https://github.com/chendaniely/dissertation-edt
+- etc...
+
+## Bookdown
+
+- ds4biomed book: https://github.com/chendaniely/ds4biomed/
+- Initial Plan: https://github.com/chendaniely/dissertation-plan
+- Prelims: https://github.com/chendaniely/dissertation-prelim
+
+## Mixed + Non-reproducible formats
+
+- IRB: https://github.com/chendaniely/dissertation-irb/
+- Presentations: https://github.com/chendaniely/dissertation-presentations
+
+## Collaborating with + without Git
+
+- Dissertation EDT: https://github.com/chendaniely/dissertation-edt
+
+- Git repo + Local writing/Compiling 
+- Collaboration / Feedback via Overleaf + git integration
+- Pull / Push to sync changes
+- Still had to manually move over artifacts
+
+## Use Child Documents
+
+- LaTeX
+- RMarkdown
+- Quarto
+
+## Useing a Build file
+
+- Make was very helpful so I do not forget what commands I need to run
+- Especially compiling latex biblography
+
+```
+LATEX=xelatex
+BIBTEX=bibtex
+STEM=main
+
+all : commands
+
+## commands   : show all commands.
+commands :
+	@grep -E '^##' Makefile | sed -e 's/## //g'
+
+## counts      : get tex word counts
+counts :
+	find . -type f -name "*.tex" | xargs texcount 2>/dev/null | grep -w "Words in text:" | cut -d : -f 2 | awk '{Total=Total+$$1} END {print "Total is: " Total}'
+
+## pdf        : re-generate PDF
+pdf :
+	${LATEX} -synctex=1 -interaction=nonstopmode ${STEM}
+#	# nomenclature/abbreviations
+	makeindex ${STEM}.nlo -s nomencl.ist -o ${STEM}.nls
+#	${BIBTEX} ${STEM}
+	${LATEX} -synctex=1 -interaction=nonstopmode ${STEM}
+	${LATEX} -synctex=1 -interaction=nonstopmode ${STEM}
+```
+
+https://github.com/chendaniely/dissertation-edt/blob/main/Makefile
+
+## What I would change
+
+- Quarto
+- knitr + LaTex Rnw files
+- But you still need to keep the original LaTeX Source (even though Overleaf can do basic R computation)
+
+## LaTeX bibs still confuse me
+
+- There are 2 ways
+- link to the overleaf docs
+
+# Making sure everything was together
+
+## All these seprate repositories
+
+- Keep them togetehr
+- Sometimes I want to reference things with relative paths
+- Mabybe an overall project to tie things together
+
+## Git Submodules
+
+- "Nest" git repositioes
+
+- https://github.com/chendaniely/dissertation
+
+## Mental Model
+
+- Each sub repo is a regular git repositoyry
+    - add / commmit / push / pull
+    - is exaactly the same
+- Everytime you push/pusll/commit from the submodule
+    - go back to the main parent repo
+    - update the commit references with add commit push
+- In the main repo, it's really just tracking the latest trackedc commit
+    - it doesn't automatically keep up with `main`
+
+# Git Submodules
+
+## How to add a sub module
+
+## how to pull
+
+## making changes
+
+## DEMO
+
+# Experiments
+
+## RUnning SHiny experiments
+
+- https://github.com/chendaniely/dissertation-phase4_exercises
+
+## What I would change
+
+- `{shinysurveys}`: https://cran.r-project.org/web/packages/shinysurveys/index.html
+
+- https://www.rstudio.com/resources/rstudioglobal-2021/designing-randomized-studies-using-shiny/
+
+- A better way to capture learnr submissions
+
+- Learnr + gradethis isn't really made for this kind of work?
+
+<!-- inicio font awesome -->
+
+```{=html}
+<script src="https://kit.fontawesome.com/1f72d6921a.js" crossorigin="anonymous"></script>
+```
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"> <!-- final font awesome -->
