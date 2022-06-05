@@ -41,6 +41,21 @@ div.footnote {
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">I’m developing a presentation for <a href="https://twitter.com/seruff_?ref_src=twsrc%5Etfw">@seruff_</a> using <a href="https://twitter.com/quarto_pub?ref_src=twsrc%5Etfw">@quarto_pub</a> presentations.<br>I started to implement a similar theme as the xaringan <a href="https://twitter.com/RLadiesGlobal?ref_src=twsrc%5Etfw">@RLadiesGlobal</a> theme made by <a href="https://twitter.com/apreshill?ref_src=twsrc%5Etfw">@apreshill</a> !<br>If anyone wants to help to improve it, It would be awesome 💜 <a href="https://twitter.com/hashtag/rladies?src=hash&amp;ref_src=twsrc%5Etfw">#rladies</a> <a href="https://twitter.com/hashtag/RStats?src=hash&amp;ref_src=twsrc%5Etfw">#RStats</a> <a href="https://t.co/xps1v49Ku4">https://t.co/xps1v49Ku4</a> <a href="https://t.co/sK9d3X3unE">pic.twitter.com/sK9d3X3unE</a></p>&mdash; Beatriz Milz (@BeaMilz) <a href="https://twitter.com/BeaMilz/status/1515327145471578120?ref_src=twsrc%5Etfw">April 16, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+## I Finally Graduated...
+:::::: columns
+::: {.column width="50%"}
+- RStatsNYC Started: 2015
+- Daniel Started Gradschool: 2015
+:::
+
+::: {.column width="50%"}
+```{r}
+knitr::include_graphics("img/intro/dan_anne-graduation.jpg")
+```
+:::
+::::::
+
+
 ## Daniel Chen, PhD, MPH {.center}
 
 :::::: columns
@@ -53,13 +68,13 @@ div.footnote {
 <a href='https://twitch.tv/chendaniely'><i class="fab fa-twitch"></i></a>
 @chendaniely
 
-<img src="img/foto.jpeg" alt="Daniel Chen" style="border-radius: 50%; max-width: 70%;"/>
+<img src="img/intro/foto.jpeg" alt="Daniel Chen" style="border-radius: 50%; max-width: 70%;"/>
 
 </center>
 :::
 
 ::: {.column width="60%"}
-- Postdoctoral Research and Teaching Fellow, UBC, MDS-Vancouver
+- Postdoctoral Research and Teaching Fellow, University of British Columbia
 
 - Data Science Educator, RStudio, PBC ([RStudio Academy](https://www.rstudio.com/academy/))
 
@@ -72,38 +87,135 @@ div.footnote {
 :::
 ::::::
 
-# Reproducible + Repliciable Science
+# Combining Analysis Work with Reports and Presentations
 
-## Replication Crisis in Science
+## I talk about this a lot...
+
+- [Building Reproducible and Replicable Projects](https://www.youtube.com/watch?v=t-vY9FeIIMk)
+- [Structuring Your Data Science Projects](https://www.youtube.com/watch?v=UQHz38s3DyA
+)
+- [Doing Data Science](https://www.youtube.com/watch?v=1VcuGSjPHWU)
+
+... and teach it.
+
+- Working around + with real-world constraints
+- Incremental improvement
+    - [JD Long, Empathy in action: Building community of practice for analytics ](https://www.youtube.com/watch?v=CjNOSrfQiAY)
+
+## Back in 2019...
+
+[Building Reproducible and Replicable Projects](https://www.youtube.com/watch?v=t-vY9FeIIMk)
+
+- **reproducibility** - the extent to which consistent results are obtained when an experiment is repeated
+
+- **replicability** - the ability of a scientific experiment or trial to be repeated to obtain a consistent result
 
 ## Important for scale
 
-## Adding Structure + Best Practices
-
+- Build more features
+- Move to larger/cloud compute
+- Collaborate with other people
 
 # Analysis Project Structure
 
 ## Folder Setup
 
+```{r}
+knitr::include_graphics("img/noble-2009.png")
+```
+
+## Folder Setup
+
+```{r}
+knitr::include_graphics("img/noble_dir_structure.png")
+```
+
+## Dissertation Analysis
+
+Repo: https://github.com/chendaniely/dissertation-analysis
+
+TODO: look into `fs::dir_tree()`
+
+```
+dissertation-analysis/
+    |
+    |- R
+    |   |-
+    |
+    |- analysis
+    |   |-
+    |
+    |- build
+    |- data/original
+    |- output]
+    |- renv
+    |
+    |- 
+```
+ 
 ## Naming Things
+
+:::::: columns
+::: {.column width="50%"}
+- - [Karl Broman, "Steps toward reproducible research"](https://www.youtube.com/watch?v=rNQ-RlG3JnQ)
+- [Jenny Bryan: Naming Things](http://www2.stat.duke.edu/~rcs46/lectures_2015/01-markdown-git/slides/naming-slides/naming-slides.pdf)
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">The Golden Rule of Naming Files and Other Things:<br>Thou shalt get only as creative with names as thy own skill with regular expressions.</p>&mdash; Jenny Bryan (@JennyBryan) <a href="https://twitter.com/JennyBryan/status/807805087544328192?ref_src=twsrc%5Etfw">December 11, 2016</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+:::
+
+::: {.column width="50%"}
+
+TODO: TOC of major topics in Jenny's talk
+
+:::
+::::::
+
+
 
 ## Project File + Working Directories
 
-## Pinning your package versions
+TODO: image of creating project files in RStudio
 
-- `renv`
-- `renv::snapshot()`
-- `renv::restore()`
+- https://rstats.wtf/project-oriented-workflow.html
+- https://rstats.wtf/safe-paths.html
 
 ## Only commiting the "final" artifacts
 
 - So the reports and presentations can always refer to things I need
+- This is the stuff that goes into your `output` or `results` folder
+    - Other projects / repositories have a consistent place to look for latest artifacts (e.g., images, tables, etc)
+    - `data/final`: for final datasets
+
+# Analysis Code Development
+
+## Testing..
+
+- Maybe this is controversial:
+
+- I didn't write unit tests for my actual functions
+    - this wasn't that practical
+- Instead, I wrote code to verify my data
+    - `stopifnot`, `{testthat}`, `{checkmate}`
+
+## Pinning your package versions
+
+- `renv`
+- `renv::init()` to create the `renv.lock` file
+- `renv::snapshot()`: to update the lockfile
+- `renv::restore()`: to restore the packages
 
 ## What I would Improve
 
 - Actually use the `R` package structure
 - I know I was asking to get my computer set on fire!
 - But the structure was there
+
+```R
+source(here("./R/remove_identifiers.R"))
+source(here("./R/remove_invalid_rows.R"))
+source(here("./R/remove_duplicate_ids.R"))
+source(here("./analysis/010-qualtrics/survey_search_names.R"))
+```
 
 ## DESCRIPTION to fake a package
 
@@ -119,7 +231,7 @@ Authors@R:
 Description: Dissertation Analysis
 Imports:
     tidyverse,
-    qualtRics
+    qualtRics   
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
@@ -127,7 +239,7 @@ Encoding: UTF-8
 LazyData: true
 ```
 
-## Load Your Functions
+### Load Your Functions
 
 ```r
 pkgload::load_all()
@@ -141,31 +253,46 @@ pkgload::load_all()
 
 https://github.com/r-lib/rig
 
-## Properly Setup a Build Enviornment
+## My Build Enviornemnt
 
+What I did:
+
+- Write an R script that runs all my parameterized reports with differnt `params`
 - All I had were R scripts
-- Look into `targets`
-- Could also have used `Make` but I needed to do parameter sweeps of files.
 - Not the worst thing in the world, I didn't mind re-running the entire pipeline
+
+## Improving the Build Enviornment
+
+What I would change + look into
+
+- `{targets}`: https://docs.ropensci.org/targets/
+
+```{r}
+knitr::include_graphics("img/targets.png")
+```
+
+- Could also have used `Make` but I needed to do parameter sweeps of files.
+    - [Building Reproducible and Replicable Projects](https://www.youtube.com/watch?v=t-vY9FeIIMk)
 
 # Other project repositories
 
 ## Don't keep everything in a mono repo
 
-- ds4biomed book: https://github.com/chendaniely/ds4biomed/
-- IRB: https://github.com/chendaniely/dissertation-irb/
-- Initial Plan: https://github.com/chendaniely/dissertation-plan
-- Presentations: https://github.com/chendaniely/dissertation-presentations
-- Prelims: https://github.com/chendaniely/dissertation-prelim
-- Submitted Paper: https://github.com/chendaniely/dissertation-paper-03-assessment
-- Actual Dissertation (EDT): https://github.com/chendaniely/dissertation-edt
-- etc...
+1. ds4biomed book: https://github.com/chendaniely/ds4biomed/
+1. IRB: https://github.com/chendaniely/dissertation-irb/
+1. Initial Plan: https://github.com/chendaniely/dissertation-plan
+1. Presentations: https://github.com/chendaniely/dissertation-presentations
+1. Prelims: https://github.com/chendaniely/dissertation-prelim
+1. Submitted Paper: https://github.com/chendaniely/dissertation-paper-03-assessmet
+1. Actual Dissertation (EDT): https://github.com/chendaniely/dissertation-edt
+1. etc...
 
 ## Bookdown
 
 - ds4biomed book: https://github.com/chendaniely/ds4biomed/
 - Initial Plan: https://github.com/chendaniely/dissertation-plan
 - Prelims: https://github.com/chendaniely/dissertation-prelim
+    - Also the submitted word document
 
 ## Mixed + Non-reproducible formats
 
@@ -174,22 +301,32 @@ https://github.com/r-lib/rig
 
 ## Collaborating with + without Git
 
-- Dissertation EDT: https://github.com/chendaniely/dissertation-edt
+Dissertation EDT: https://github.com/chendaniely/dissertation-edt
+
+Workflow:
 
 - Git repo + Local writing/Compiling 
 - Collaboration / Feedback via Overleaf + git integration
 - Pull / Push to sync changes
-- Still had to manually move over artifacts
+- Still had to manually move over artifacts (overleaf limitation)
 
 ## Use Child Documents
 
+:::::: columns
+::: {.column width="25%"}
 - LaTeX
 - RMarkdown
 - Quarto
+:::
+
+::: {.column width="75%"}
+Child doc latex example
+:::
+::::::
 
 ## Useing a Build file
 
-- Make was very helpful so I do not forget what commands I need to run
+- Do not forget what commands I need to run
 - Especially compiling latex biblography
 
 ```
@@ -223,20 +360,23 @@ https://github.com/chendaniely/dissertation-edt/blob/main/Makefile
 
 - Quarto
 - knitr + LaTex Rnw files
-- But you still need to keep the original LaTeX Source (even though Overleaf can do basic R computation)
+- Challenge: Still need to keep the original LaTeX Source
+    - even though Overleaf can do basic R computation
 
 ## LaTeX bibs still confuse me
+
+TODO:
 
 - There are 2 ways
 - link to the overleaf docs
 
-# Making sure everything was together
+# Keeping Everything Together
 
 ## All these seprate repositories
 
-- Keep them togetehr
+- Keep them together
 - Sometimes I want to reference things with relative paths
-- Mabybe an overall project to tie things together
+- Maybe an overall project to tie things together
 
 ## Git Submodules
 
@@ -257,17 +397,15 @@ https://github.com/chendaniely/dissertation-edt/blob/main/Makefile
 
 # Git Submodules
 
-## How to add a sub module
+## How to add a submodule
 
 ## how to pull
 
 ## making changes
 
-## DEMO
-
 # Experiments
 
-## RUnning SHiny experiments
+## Running SHiny experiments
 
 - https://github.com/chendaniely/dissertation-phase4_exercises
 
@@ -287,3 +425,13 @@ https://github.com/chendaniely/dissertation-edt/blob/main/Makefile
 <script src="https://kit.fontawesome.com/1f72d6921a.js" crossorigin="anonymous"></script>
 ```
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"> <!-- final font awesome -->
+
+## What I would change
+
+1. DESCRIPTION to fake a package
+1. Rig to manage Multiple R versions
+1. `{targets}` + `Makefile`: Improving the Build Enviornment
+1. Quarto
+1. `{shinysurveys}`: to do better block randomization
+
+# Thanks!
