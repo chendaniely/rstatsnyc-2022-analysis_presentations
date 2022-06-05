@@ -6,7 +6,7 @@ author: "[Daniel Chen](https://daniel.rbind.io/)"
 date: "Thursday, June 9, 2022"
 format:
   revealjs:
-    footer: "[Daniel Chen](https://daniel.rbind.io/). @chendaniely. Using [Quarto](https://quarto.org/docs/presentations/revealjs/index.html). Slides: [https://github.com/chendaniely/2022-04-28-pycon2022-eduSummit-practice](https://github.com/chendaniely/2022-04-28-pycon2022-eduSummit-practice)"
+    footer: "[Daniel Chen](https://daniel.rbind.io/). @chendaniely. Using [Quarto](https://quarto.org/docs/presentations/revealjs/index.html). Slides: [https://github.com/chendaniely/rstatsnyc-2022-analysis_presentations](https://github.com/chendaniely/rstatsnyc-2022-analysis_presentations)"
     theme: ["custom.scss"]
     slide-number: c/t
     show-slide-number: all
@@ -42,10 +42,16 @@ div.footnote {
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">I’m developing a presentation for <a href="https://twitter.com/seruff_?ref_src=twsrc%5Etfw">@seruff_</a> using <a href="https://twitter.com/quarto_pub?ref_src=twsrc%5Etfw">@quarto_pub</a> presentations.<br>I started to implement a similar theme as the xaringan <a href="https://twitter.com/RLadiesGlobal?ref_src=twsrc%5Etfw">@RLadiesGlobal</a> theme made by <a href="https://twitter.com/apreshill?ref_src=twsrc%5Etfw">@apreshill</a> !<br>If anyone wants to help to improve it, It would be awesome 💜 <a href="https://twitter.com/hashtag/rladies?src=hash&amp;ref_src=twsrc%5Etfw">#rladies</a> <a href="https://twitter.com/hashtag/RStats?src=hash&amp;ref_src=twsrc%5Etfw">#RStats</a> <a href="https://t.co/xps1v49Ku4">https://t.co/xps1v49Ku4</a> <a href="https://t.co/sK9d3X3unE">pic.twitter.com/sK9d3X3unE</a></p>&mdash; Beatriz Milz (@BeaMilz) <a href="https://twitter.com/BeaMilz/status/1515327145471578120?ref_src=twsrc%5Etfw">April 16, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ## I Finally Graduated...
+
 :::::: columns
 ::: {.column width="50%"}
-- RStatsNYC Started: 2015
-- Daniel Started Gradschool: 2015
+Start Times:
+
+- RStatsNYC: 2015
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/oPCIqDagGSk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+- Grad School: 2015
 :::
 
 ::: {.column width="50%"}
@@ -54,7 +60,6 @@ knitr::include_graphics("img/intro/dan_anne-graduation.jpg")
 ```
 :::
 ::::::
-
 
 ## Daniel Chen, PhD, MPH {.center}
 
@@ -92,15 +97,17 @@ knitr::include_graphics("img/intro/dan_anne-graduation.jpg")
 ## I talk about this a lot...
 
 - [Building Reproducible and Replicable Projects](https://www.youtube.com/watch?v=t-vY9FeIIMk)
-- [Structuring Your Data Science Projects](https://www.youtube.com/watch?v=UQHz38s3DyA
-)
+- [Structuring Your Data Science Projects](https://www.youtube.com/watch?v=UQHz38s3DyA)
 - [Doing Data Science](https://www.youtube.com/watch?v=1VcuGSjPHWU)
 
-... and teach it.
+### ... and teach it.
 
-- Working around + with real-world constraints
+### Constrants + Incremental Improvements
+
+- Working with real-world constraints
 - Incremental improvement
     - [JD Long, Empathy in action: Building community of practice for analytics ](https://www.youtube.com/watch?v=CjNOSrfQiAY)
+- Time-box your learning
 
 ## Back in 2019...
 
@@ -110,7 +117,7 @@ knitr::include_graphics("img/intro/dan_anne-graduation.jpg")
 
 - **replicability** - the ability of a scientific experiment or trial to be repeated to obtain a consistent result
 
-## Important for scale
+### Important for scale
 
 - Build more features
 - Move to larger/cloud compute
@@ -132,32 +139,67 @@ knitr::include_graphics("img/noble_dir_structure.png")
 
 ## Dissertation Analysis
 
-Repo: https://github.com/chendaniely/dissertation-analysis
+Repo: [https://github.com/chendaniely/dissertation-analysis](https://github.com/chendaniely/dissertation-analysis)
 
-TODO: look into `fs::dir_tree()`
+:::::: columns
+::: {.column width="50%"}
+Project/Packaging
+```
+├── LICENSE
+├── R
+│   ├── get_survey.R
+│   ├── gg_plot_dendro.R
+│   ├── likert.R
+│   ├── offset_number.R
+│   ├── plot_question_bar.R
+│   ├── question_str_to_int.R
+│   ├── recode_occupation.R
+│   ├── remove_duplicate_ids.R
+│   ├── remove_identifiers.R
+│   ├── remove_invalid_rows.R
+│   ├── save_analysis_edt.R
+│   ├── strip_html.R
+│   └── survey_q_multi_choice_multi_answer.R
+├── README.md
+├── dissertation-analysis.Rproj
+├── renv
+│   ├── activate.R
+│   └── settings.dcf
+└── renv.lock
+```
+:::
 
+::: {.column width="50%"}
+Analysis
 ```
-dissertation-analysis/
-    |
-    |- R
-    |   |-
-    |
-    |- analysis
-    |   |-
-    |
-    |- build
-    |- data/original
-    |- output]
-    |- renv
-    |
-    |- 
+├── analysis
+│   ├── 010-qualtrics
+│   ├── 020-validation
+│   ├── 030-persona
+│   ├── 040-workshop
+│   ├── 050-exercises
+│   └── emails
+├── build
+│   ├── 00-clean.R
+│   ├── 01-download_process_qualtrics.R
+│   └── 10-persona.R
+├── data
+│   └── original
+├── output
+│   ├── exercises
+│   ├── persona
+│   ├── survey
+│   └── validation
 ```
+:::
+::::::
+
  
 ## Naming Things
 
 :::::: columns
 ::: {.column width="50%"}
-- - [Karl Broman, "Steps toward reproducible research"](https://www.youtube.com/watch?v=rNQ-RlG3JnQ)
+- [Karl Broman, "Steps toward reproducible research"](https://www.youtube.com/watch?v=rNQ-RlG3JnQ)
 - [Jenny Bryan: Naming Things](http://www2.stat.duke.edu/~rcs46/lectures_2015/01-markdown-git/slides/naming-slides/naming-slides.pdf)
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">The Golden Rule of Naming Files and Other Things:<br>Thou shalt get only as creative with names as thy own skill with regular expressions.</p>&mdash; Jenny Bryan (@JennyBryan) <a href="https://twitter.com/JennyBryan/status/807805087544328192?ref_src=twsrc%5Etfw">December 11, 2016</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
@@ -165,19 +207,43 @@ dissertation-analysis/
 
 ::: {.column width="50%"}
 
-TODO: TOC of major topics in Jenny's talk
+1. Machine readable
+    - Deliberate user of `_` and `-`
+2. Human readable
+    - contains info on content
+3. Plays well with default ordering
+    - ISO 8601
+    - Left pad with `0`
+
+```
+> fs::dir_tree("analysis/020-validation/")
+analysis/020-validation/
+├── 010-prep_survey_questions.R
+├── 020-005-fa.Rmd
+├── 020-010-cronbah.Rmd
+└── 030-cart.Rmd
+```
 
 :::
 ::::::
 
 
 
-## Project File + Working Directories
-
-TODO: image of creating project files in RStudio
+## Project File
 
 - https://rstats.wtf/project-oriented-workflow.html
+
+```{r}
+knitr::include_graphics("img/rstudio-new_project-01.PNG")
+```
+
+## Working Directories
+
 - https://rstats.wtf/safe-paths.html
+
+```{r}
+knitr::include_graphics("img/here.png")
+```
 
 ## Only commiting the "final" artifacts
 
@@ -186,9 +252,36 @@ TODO: image of creating project files in RStudio
     - Other projects / repositories have a consistent place to look for latest artifacts (e.g., images, tables, etc)
     - `data/final`: for final datasets
 
+```
+> fs::dir_tree("output/", recurse=1)
+output/
+├── exercises
+│   ├── score_prop-ex-treatment-facet_pre-combine_treatments.png
+│   ├── score_prop-ex-treatment-facet_pre.png
+│   ├── score_prop-ex-treatment-no_facet-combine_treatments.png
+│   ├── score_prop-ex-treatment-no_facet.png
+│   ├── score_prop-ex-treatment-pre100.png
+│   ├── score_prop-ex-treatment.png
+│   └── time_to_complete-ex-treatment-no_facet-combine_treatments.png
+├── persona
+│   ├── efa_eigen_scree.png
+│   ├── efa_eigen_scree_good.png
+│   ├── efa_item_correlations.png
+│   ├── likert_only
+│   ├── survey_likert
+│   └── survey_only
+├── survey
+│   ├── 01-self_assessment
+│   ├── 02-pre_workshop
+│   ├── 03-post_workshop
+│   └── 050-logitudinal
+└── validation
+    └── 020-010-cronbah-survey_likert.html
+```
+
 # Analysis Code Development
 
-## Testing..
+## Testing...
 
 - Maybe this is controversial:
 
@@ -196,6 +289,20 @@ TODO: image of creating project files in RStudio
     - this wasn't that practical
 - Instead, I wrote code to verify my data
     - `stopifnot`, `{testthat}`, `{checkmate}`
+- Research Software Engineers
+    - This is an analysis project, not software
+
+```{r, echo=TRUE}
+x <- 42
+stopifnot(x == 42)
+```
+
+<br />
+
+```{r, echo=TRUE, error=TRUE}
+stopifnot(x == 525600)
+```
+
 
 ## Pinning your package versions
 
@@ -203,6 +310,30 @@ TODO: image of creating project files in RStudio
 - `renv::init()` to create the `renv.lock` file
 - `renv::snapshot()`: to update the lockfile
 - `renv::restore()`: to restore the packages
+
+:::::: columns
+
+:::{.column width="50%"}
+```
+├── renv
+│   ├── activate.R
+│   └── settings.dcf
+└── renv.lock
+```
+:::
+
+:::{.column width="50%"}
+```
+    "tidyverse": {
+      "Package": "tidyverse",
+      "Version": "1.3.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "fc4c72b6ae9bb283416bd59a3303bbab"
+    },
+```
+:::
+::::::
 
 ## What I would Improve
 
@@ -247,11 +378,11 @@ pkgload::load_all()
 
 ## Rig to manage Multiple R versions
 
+[https://github.com/r-lib/rig](https://github.com/r-lib/rig)
+
 - Already built-in to windows
 - RSwitch isn't maintained
 - Linux now has _something_
-
-https://github.com/r-lib/rig
 
 ## My Build Enviornemnt
 
@@ -313,16 +444,54 @@ Workflow:
 ## Use Child Documents
 
 :::::: columns
-::: {.column width="25%"}
+::: {.column width="40%"}
 - LaTeX
 - RMarkdown
 - Quarto
+
+`main.tex`:
+
+```latex
+\usepackage{subfiles}
+
+\begin{document}
+    \chapter{Introduction}
+        \label{ch:introduction}
+        \subfile{010-intro/010-intro}
+\end{document}
+```
 :::
 
-::: {.column width="75%"}
-Child doc latex example
+::: {.column width="60%"}
+
+`010-intro/010-intro.tex`:
+```latex
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+
+    \subfile{010-010-intro}
+
+    \section{History of Data Science}
+        \label{se:intro-ds-history}
+
+        Statistics, data science, and computational programming education
+\end{document}
+```
+
+`010-intro/010-010-intro.tex`:
+```latex
+\documentclass[010-intro.tex]{subfiles}
+\begin{document}
+
+This dissertation describes the current state of education and pedagogy in the field of data science
+and explores ways to improve data science education in a specific sub-field, biomedical sciences.
+...
+\end{document}
+```
 :::
 ::::::
+
+[https://github.com/chendaniely/dissertation-edt/blob/main/main.tex](https://github.com/chendaniely/dissertation-edt/blob/main/main.tex)
 
 ## Useing a Build file
 
@@ -354,7 +523,7 @@ pdf :
 	${LATEX} -synctex=1 -interaction=nonstopmode ${STEM}
 ```
 
-https://github.com/chendaniely/dissertation-edt/blob/main/Makefile
+[https://github.com/chendaniely/dissertation-edt/blob/main/Makefile](https://github.com/chendaniely/dissertation-edt/blob/main/Makefile)
 
 ## What I would change
 
@@ -362,13 +531,6 @@ https://github.com/chendaniely/dissertation-edt/blob/main/Makefile
 - knitr + LaTex Rnw files
 - Challenge: Still need to keep the original LaTeX Source
     - even though Overleaf can do basic R computation
-
-## LaTeX bibs still confuse me
-
-TODO:
-
-- There are 2 ways
-- link to the overleaf docs
 
 # Keeping Everything Together
 
@@ -380,36 +542,97 @@ TODO:
 
 ## Git Submodules
 
+[https://github.com/chendaniely/dissertation](https://github.com/chendaniely/dissertation)
+
 - "Nest" git repositioes
 
-- https://github.com/chendaniely/dissertation
+:::::: columns
+:::{.column width="50%"}
+```
+> fs::dir_tree(".", recurse=1)
+.
+├── 010-intro.md
+├── README.md
+├── dissertation.Rproj
+└── submodules
+    ├── dissertation-analysis
+    ├── dissertation-edt
+    ├── dissertation-irb
+    ├── dissertation-paper-03-assessment
+    ├── dissertation-phase4_exercises
+    ├── dissertation-plan
+    ├── dissertation-prelim
+    ├── dissertation-presentations
+    ├── dissertation-thank_you
+    └── ds4biomed
+```
+:::
 
-## Mental Model
+:::{.column width="50%"}
+```
+> fs::dir_tree(".", recurse=2)
+.
+├── 010-intro.md
+├── README.md
+├── dissertation.Rproj
+└── submodules
+    ├── dissertation-analysis
+    │   ├── LICENSE
+    │   ├── R
+    │   ├── README.md
+    │   ├── analysis
+    │   ├── build
+    │   ├── data
+    │   ├── dissertation-analysis.Rproj
+    │   ├── output
+    │   ├── renv
+    │   └── renv.lock
+    ├── dissertation-edt
+    │   ├── 005-frontmatter
+    │   ├── 010-intro
+    │   ├── 020-persona_validation
+    │   ├── 030-workshop
+    │   ├── 040-assessment
+    │   ├── 050-conclusion
+    │   ├── 090-appendix
+    │   ├── Chen_DY_D_2021.pdf
+    │   ├── LICENSE
+    │   ├── Makefile
+    │   ├── README.md
+    │   ├── VTthesis.cls
+    │   ├── bib.bib
+    │   ├── figs
+    │   ├── main.tex
+    │   └── snippets.txt
+```
+:::
+::::::
 
-- Each sub repo is a regular git repositoyry
-    - add / commmit / push / pull
-    - is exaactly the same
-- Everytime you push/pusll/commit from the submodule
+## Git Submodules: Mental Model
+
+- Each sub repo is a regular git repository
+    - `add` / `commmit` / `push` / `pull`
+    - is exactly the same
+- Every time you `push`/`pull`/`commit` from the submodule
     - go back to the main parent repo
-    - update the commit references with add commit push
-- In the main repo, it's really just tracking the latest trackedc commit
+    - update the commit references with `add`, `commit`, and `push`
+- In the main repo, it's really just tracking the latest tracked commit
     - it doesn't automatically keep up with `main`
 
-# Git Submodules
+## Parent repo only tracking the commit
 
-## How to add a submodule
+```{r}
+knitr::include_graphics("img/git-submodule-example.png")
+```
 
-## how to pull
-
-## making changes
 
 # Experiments
 
 ## Running SHiny experiments
 
-- https://github.com/chendaniely/dissertation-phase4_exercises
+[https://github.com/chendaniely/dissertation-phase4_exercises](https://github.com/chendaniely/dissertation-phase4_exercises)
 
-## What I would change
+### What I would change
 
 - `{shinysurveys}`: https://cran.r-project.org/web/packages/shinysurveys/index.html
 
@@ -426,12 +649,25 @@ TODO:
 ```
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"> <!-- final font awesome -->
 
-## What I would change
+## In Sum: What I would change
 
 1. DESCRIPTION to fake a package
 1. Rig to manage Multiple R versions
-1. `{targets}` + `Makefile`: Improving the Build Enviornment
-1. Quarto
+1. `{targets}` + `Makefile`: Improving the Build Environment
+1. Quarto for my websites, books, and presentations
+    - maybe even the final EDT?
 1. `{shinysurveys}`: to do better block randomization
 
 # Thanks!
+
+<!--
+
+## LaTeX bibs still confuse me
+
+TODO:
+
+- There are 2 ways
+- link to the overleaf docs
+
+
+--->
