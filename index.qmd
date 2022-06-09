@@ -21,6 +21,8 @@ div.footnote {
 }
 </style>
 
+<img src="img/intro/munsee_lenape.png" alt="map of native lands in NYC Manhattan area showing the munsee Lenape and Wappinger Tribes." />
+
 ::: footnote
 
 - https://native-land.ca/
@@ -283,9 +285,7 @@ output/
 
 ## Testing...
 
-- Maybe this is controversial:
-
-- I didn't write unit tests for my actual functions
+- Controversial: I didn't write unit tests for my actual functions
     - this wasn't that practical
 - Instead, I wrote code to verify my data
     - `stopifnot`, `{testthat}`, `{checkmate}`
@@ -388,7 +388,7 @@ pkgload::load_all()
 
 What I did:
 
-- Write an R script that runs all my parameterized reports with differnt `params`
+- Write an R script that runs all my parameterized reports with different `params`
 - All I had were R scripts
 - Not the worst thing in the world, I didn't mind re-running the entire pipeline
 
@@ -414,7 +414,7 @@ knitr::include_graphics("img/targets.png")
 1. Initial Plan: https://github.com/chendaniely/dissertation-plan
 1. Presentations: https://github.com/chendaniely/dissertation-presentations
 1. Prelims: https://github.com/chendaniely/dissertation-prelim
-1. Submitted Paper: https://github.com/chendaniely/dissertation-paper-03-assessmet
+1. Submitted Paper: https://github.com/chendaniely/dissertation-paper-03-assessment
 1. Actual Dissertation (EDT): https://github.com/chendaniely/dissertation-edt
 1. etc...
 
@@ -424,6 +424,8 @@ knitr::include_graphics("img/targets.png")
 - Initial Plan: https://github.com/chendaniely/dissertation-plan
 - Prelims: https://github.com/chendaniely/dissertation-prelim
     - Also the submitted word document
+
+![](img/Snake_title_cropped.png)
 
 ## Mixed + Non-reproducible formats
 
@@ -493,10 +495,10 @@ and explores ways to improve data science education in a specific sub-field, bio
 
 [https://github.com/chendaniely/dissertation-edt/blob/main/main.tex](https://github.com/chendaniely/dissertation-edt/blob/main/main.tex)
 
-## Useing a Build file
+## Using a Build file
 
 - Do not forget what commands I need to run
-- Especially compiling latex biblography
+- Especially compiling latex bibliography
 
 ```
 LATEX=xelatex
@@ -525,6 +527,19 @@ pdf :
 
 [https://github.com/chendaniely/dissertation-edt/blob/main/Makefile](https://github.com/chendaniely/dissertation-edt/blob/main/Makefile)
 
+## Make commands
+
+```
+% make
+commands    : show all commands.
+counts      : get tex word counts
+pdf         : re-generate PDF
+clean       : clean up junk files.
+sync        : sync overleaf -> local -> GitHub
+push        : push local to GitHub and Overleaf
+fetch       : fetch remotes origin + leaf
+```
+
 ## What I would change
 
 - Quarto
@@ -544,7 +559,7 @@ pdf :
 
 [https://github.com/chendaniely/dissertation](https://github.com/chendaniely/dissertation)
 
-- "Nest" git repositioes
+- "Nest" git repository
 
 :::::: columns
 :::{.column width="50%"}
@@ -628,7 +643,7 @@ knitr::include_graphics("img/git-submodule-example.png")
 
 # Experiments
 
-## Running SHiny experiments
+## Running Shiny experiments
 
 [https://github.com/chendaniely/dissertation-phase4_exercises](https://github.com/chendaniely/dissertation-phase4_exercises)
 
